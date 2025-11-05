@@ -1,68 +1,122 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+@theme {
+  --font-poppins: Poppins, sans-serif;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  @apply font-poppins;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Estilos generales para container-page - pueden ser sobrescritos */
+.container-page > div:not(:has(form)) {
+  @apply h-lvh flex flex-col gap-4 justify-center items-center;
+}
+
+a {
+  @apply text-white hover:underline text-lg;
+}
+
+nav {
+  @apply fixed w-full;
+}
+
+nav,
+footer {
+  @apply flex gap-8 bg-purple-900 justify-center p-4 text-lg;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  @apply bg-purple-700 text-white py-2 rounded hover:bg-purple-800 w-48 text-lg cursor-pointer;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+h1 {
+  @apply text-4xl font-bold mb-2;
+}
+
+h2 {
+  @apply text-2xl font-semibold mb-2;
+}
+
+/* Estilos para Login */
+.container-page {
+  @apply min-h-screen flex items-center justify-center p-4;
+  @apply bg-gradient-to-br from-violet-50 to-purple-50 dark:from-gray-900 dark:to-gray-800;
+}
+
+.container-page > div {
+  @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg;
+  @apply p-8 border border-gray-200 dark:border-gray-700;
+  @apply w-full max-w-md;
+  @apply transition-all duration-200 hover:shadow-xl;
+}
+
+.container-page h1 {
+  @apply text-3xl font-bold text-center mb-12;
+  @apply bg-gradient-to-r from-violet-600 to-purple-600;
+  @apply bg-clip-text text-transparent;
+}
+
+.container-page form {
+  @apply space-y-2 w-full;
+}
+
+.container-page form > div {
+  @apply space-y-2;
+}
+
+.container-page label {
+  @apply block text-sm font-medium text-gray-700 dark:text-gray-300;
+}
+
+.container-page input {
+  @apply w-full px-4 py-3 rounded-lg;
+  @apply border-2 border-gray-300 dark:border-gray-600;
+  @apply bg-white dark:bg-gray-800;
+  @apply text-gray-900 dark:text-gray-100;
+  @apply focus:outline-none focus:ring-4 focus:ring-violet-300 focus:border-violet-500;
+  @apply transition-all duration-200;
+  @apply placeholder:text-gray-400 dark:placeholder:text-gray-500;
+}
+
+.container-page button[type="submit"] {
+  @apply w-full mt-8;
+  @apply bg-violet-600 hover:bg-violet-700 active:bg-violet-800;
+  @apply text-white shadow-lg hover:shadow-xl;
+  @apply transition-all duration-200 ease-in-out;
+  @apply transform hover:scale-105 active:scale-95;
+  @apply focus:outline-none focus:ring-4 focus:ring-violet-300 focus:ring-offset-2;
+  @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+}
+
+/* Separador */
+.container-page > div > div:last-child {
+  @apply mt-8;
+}
+
+.container-page > div > div:last-child > span {
+  @apply relative z-10 inline-block px-4 text-center text-sm text-gray-500 dark:text-gray-400 mb-10;
+  @apply bg-white dark:bg-gray-800;
+  @apply w-full;
+}
+
+.container-page > div > div:last-child > span::before {
+  content: '';
+  @apply absolute left-0 top-1/2 w-full h-px;
+  @apply bg-gray-300 dark:bg-gray-600;
+  @apply -translate-y-1/2 -z-10;
+}
+
+/* Botón de Google */
+.container-page > div > div:last-child > button {
+  @apply w-full mt-1 flex items-center justify-center gap-3;
+  @apply bg-violet-600 hover:bg-violet-700 active:bg-violet-800;
+  @apply text-white shadow-lg hover:shadow-xl;
+  @apply transition-all duration-200 ease-in-out;
+  @apply transform hover:scale-105 active:scale-95;
+  @apply focus:outline-none focus:ring-4 focus:ring-violet-300 focus:ring-offset-2;
+}
+
+.container-page > div > div:last-child > button img {
+  @apply w-6 h-6;
 }
