@@ -1,12 +1,14 @@
 ## Instrucciones para correr el fronted
 ### 1. Instalar las dependencias
 
+```bash
 npm install
-
+```
 ### 2. Correr el servidor
 
+```bash
 npm run dev
-
+```
 ### 3. Como probar la aplicacion
 
 Para probar el chat correctamente:
