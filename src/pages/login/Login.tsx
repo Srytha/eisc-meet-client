@@ -18,8 +18,8 @@ const Login: React.FC = () => {
     }, [initAuthObserver]);
     
     return (
-        <div className="container-page">
-            <div >
+        <div className="container-page" style={{ backgroundColor: '#f0f2f5', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ height: 'auto', backgroundColor: 'white' }}>
                 <h1>Iniciar Sesión</h1>
                 <div>
                     <button onClick={handleLoginGoogle} >
