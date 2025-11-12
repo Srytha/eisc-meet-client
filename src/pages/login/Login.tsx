@@ -1,22 +1,22 @@
 import type React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthStore from '../../stores/useAuthStore';
+import { useEffect } from 'react';
 
 const Login: React.FC = () => {
     const navigate = useNavigate();
-    const { setUser } = useAuthStore();
+    const { loginWithGoogle, initAuthObserver } = useAuthStore();
 
     const handleLoginGoogle = (e: React.FormEvent) => {
         e.preventDefault();
-        const user = {
-            displayName: "John Doe",
-            email: "john.doe@gmail.com",
-            photoURL: "photo.com",
-        }
-        setUser(user);
-        navigate("/profile")
+        loginWithGoogle().then(() => navigate("/home"));
     }
 
+    useEffect(()   => {
+        const unsub = initAuthObserver();
+        return () => unsub();
+    }, [initAuthObserver]);
+    
     return (
         <div className="container-page">
             <div >
